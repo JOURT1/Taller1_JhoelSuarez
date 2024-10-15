@@ -10,6 +10,7 @@ namespace Taller1_JhoelSuarez.Models
         [MaxLength(500)]
         public string Direccion { get; set; }
         public string Ciudad { get; set; }
+        [Range(0,500)]
         public int Capacidad { get; set; }
     }
 }

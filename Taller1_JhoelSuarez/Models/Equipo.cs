@@ -11,6 +11,7 @@ namespace Taller1_JhoelSuarez.Models
         [MaxLength(200)]
         public string Nombre { get; set; }
         public string Ciudad { get; set; }
+        [Range(0,100)]
         public int Títulos { get; set; }
         public Boolean AceptaExtranjeros { get; set; }
 

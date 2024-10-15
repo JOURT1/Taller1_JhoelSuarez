@@ -11,6 +11,7 @@ namespace Taller1_JhoelSuarez.Models
         [MaxLength(200)]
         public string Nombre { get; set; }
         public string Posicion { get; set; }
+        [Range(0,100)]
         public int Edad { get; set; }
 
         public Equipo Equipo { get; set; }
