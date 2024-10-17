@@ -16,7 +16,7 @@ namespace Taller1_JhoelSuarez.Models
 
         [ForeignKey("Equipo")]
         public int IdEquipo { get; set; }
-        public Equipo Equipo { get; set; }
+        public Equipo? Equipo { get; set; }
 
     }
 }

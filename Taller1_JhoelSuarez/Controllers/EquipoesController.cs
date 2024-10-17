@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Taller1_JhoelSuarez.Data;
 using Taller1_JhoelSuarez.Models;
 
@@ -59,12 +61,16 @@ namespace Taller1_JhoelSuarez.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Ciudad,Títulos,AceptaExtranjeros,IdEstadio")] Equipo equipo)
         {
+            Debug.WriteLine(JsonConvert.SerializeObject(equipo));
+            Debug.WriteLine(JsonConvert.SerializeObject(ModelState));
+
             if (ModelState.IsValid)
             {
                 _context.Add(equipo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            
             ViewData["IdEstadio"] = new SelectList(_context.Set<Estadio>(), "Id", "Direccion", equipo.IdEstadio);
             return View(equipo);
         }
