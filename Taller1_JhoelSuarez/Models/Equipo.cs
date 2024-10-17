@@ -15,9 +15,9 @@ namespace Taller1_JhoelSuarez.Models
         public int Títulos { get; set; }
         public Boolean AceptaExtranjeros { get; set; }
 
-        public Estadio Estadio { get; set; }
         [ForeignKey("Estadio")]
         public int IdEstadio { get; set; }
+        public Estadio Estadio { get; set; }
 
     }
 }
