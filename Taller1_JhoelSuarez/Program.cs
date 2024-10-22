@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;//siua
 using Microsoft.Extensions.DependencyInjection;
 using Taller1_JhoelSuarez.Data;
 var builder = WebApplication.CreateBuilder(args);

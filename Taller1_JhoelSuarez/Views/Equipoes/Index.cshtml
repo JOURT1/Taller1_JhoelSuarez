@@ -6,6 +6,18 @@
 
 <h1>@ViewData["Title"]</h1>
 
+<form asp-action="FiltrarJugadoresPorEquipo" method="post">
+    <label for="equipo">Selecciona un equipo:</label>
+    <select id="equipo" name="idEquipo" class="form-control">
+        @foreach (var equipo in Model)
+        {
+            <option value="@equipo.Id">@equipo.Nombre</option>
+        }
+    </select>
+    <br />
+    <button type="submit" class="btn btn-primary">Filtrar Jugadores</button>
+</form>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -57,3 +69,4 @@
 }
     </tbody>
 </table>
+

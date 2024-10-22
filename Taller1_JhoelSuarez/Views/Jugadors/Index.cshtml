@@ -6,6 +6,8 @@
 
 <h1>@ViewData["Title"]</h1>
 
+
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -51,3 +53,30 @@
 }
     </tbody>
 </table>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Posición</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var jugador in Model)
+            {
+                <tr>
+                    <td>@jugador.Nombre</td>
+                    <td>@jugador.Posicion</td>
+                    <td>@jugador.Edad</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No se encontraron jugadores para el equipo seleccionado.</p>
+}

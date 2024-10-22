@@ -21,6 +21,8 @@ namespace Taller1_JhoelSuarez.Controllers
             _context = context;
         }
 
+
+
         // GET: Equipoes
         public async Task<IActionResult> Index()
         {

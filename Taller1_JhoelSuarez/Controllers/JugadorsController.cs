@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Taller1_JhoelSuarez.Data;
 using Taller1_JhoelSuarez.Models;
+using Taller1_JhoelSuarez.ViewModels;
 
 namespace Taller1_JhoelSuarez.Controllers
 {
@@ -17,6 +18,27 @@ namespace Taller1_JhoelSuarez.Controllers
         public JugadorsController(Taller1_JhoelSuarezContext context)
         {
             _context = context;
+        }
+
+        // Acción para filtrar jugadores por equipo
+        public IActionResult FiltrarJugadoresPorEquipo(int idEquipo)
+        {
+            // Consulta para filtrar jugadores por el Id del equipo seleccionado
+            var jugadores = _context.Jugador
+                .Include(j => j.Equipo) // Incluimos los datos del equipo para evitar cargas diferidas
+                .Where(j => j.IdEquipo == idEquipo) // Filtro por el equipo seleccionado
+                .ToList();
+
+            // Pasamos la lista de jugadores filtrados a la vista
+            return View(jugadores);
+        }
+
+        // Opción para cargar la vista donde el usuario selecciona el equipo
+        public IActionResult SeleccionarEquipo()
+        {
+            // Cargar los equipos disponibles
+            var equipos = _context.Equipo.ToList();
+            return View(equipos);
         }
 
         // GET: Jugadors
